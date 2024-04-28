@@ -1,9 +1,9 @@
 #!/bin/bash
 
-rm -f scientific-before
-rm -f scientific-after
-rm -f non-scientific-before
-rm -f non-scientific-after
+rm -rf scientific-before
+rm -rf scientific-after
+rm -rf non-scientific-before
+rm -rf non-scientific-after
 
 mkdir scientific-before
 mkdir scientific-after

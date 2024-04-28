@@ -15,3 +15,9 @@ The following files contain the lists of youtube videos
 `yt-dlp`, `python3` and `uniq` must be installed and available on the path.
 
 run script `download-transcripts.sh` to download and process all (available) transcripts.  Please note not all videos have transcripts available.
+
+## module downloads
+
+make sure to install the necessary models : 
+
+python -m spacy download en_core_web_trf

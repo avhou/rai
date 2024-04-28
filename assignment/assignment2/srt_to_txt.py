@@ -1,5 +1,6 @@
 """
 Creates readable text file from SRT file.
+taken from https://gist.github.com/ndunn219/62263ce1fb59fda08656be7369ce329b and adapted
 """
 import re, sys
 import os
