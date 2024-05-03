@@ -16,13 +16,13 @@ additional_en_stop = {"um", "uh", "-", "[", "]"}
 
 def should_include(token: spacy.tokens.token.Token) -> bool:
     value = get_token_value(token)
+    if len(value) < 2:
+        return False
     if token.orth_.isspace():
         return False
     if value in en_stop:
         return False
     if value in additional_en_stop:
-        return False
-    if len(value) < 2:
         return False
     return True
 
@@ -46,6 +46,9 @@ def read_transcripts_lines(file: str) -> List[str]:
 
 def read_tokenized_transcripts(file: str) -> Iterator[str]:
     return tokenize(read_transcripts(file))
+
+def read_tokenized_transcripts_lines(file: str) -> List[List[str]]:
+    return [list(tokenize(line)) for line in read_transcripts_lines(file)]
 
 
 def clean_transcripts(file: str):

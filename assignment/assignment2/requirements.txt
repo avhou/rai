@@ -3,3 +3,7 @@ nltk
 wordcloud
 matplotlib
 spacy
+gensim
+scipy==1.12 
+flair
+wtpsplit
