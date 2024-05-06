@@ -1,0 +1,82 @@
+interactie met chatgpt :
+
+apply the EU AI act to AI technologies already being abused, such as deepfake videos that are used by scammers for financial gain, ie deepfake videos of trustworthy public figures praising fake investments.  consider the following different stakeholders : social media companies distributing the videos, scammers making the videos and the victims falling for the scam
+
+Applying the EU AI Act to the issue of deepfake videos used by scammers for financial gain involves considering various stakeholders, including social media companies distributing the videos, the scammers creating the videos, and the victims falling for the scams. Here's how the EU AI Act could address the issue:
+
+1. **Social Media Companies**:
+   - The EU AI Act would hold social media companies accountable for the distribution of deepfake videos that are used for fraudulent purposes. Platforms would need to implement measures to detect and remove harmful content, including deepfakes that manipulate trustworthy public figures to promote fake investments.
+   - Social media companies would be required to implement transparency measures, such as providing clear information to users about the authenticity of content, including whether it has been digitally altered or manipulated.
+   - Additionally, the Act could mandate that platforms adopt mechanisms for reporting and removing harmful deepfake content promptly, ensuring swift action to prevent the dissemination of fraudulent material.
+
+2. **Scammers**:
+   - The EU AI Act would classify the creation and distribution of deepfake videos for fraudulent purposes as high-risk AI systems due to their potential to cause significant harm to individuals and society. As a result, such activities would be subject to strict regulatory oversight and enforcement measures.
+   - Scammers engaged in creating deepfake videos would face penalties and sanctions under the Act, including fines and legal consequences for violating regulations related to AI ethics and consumer protection.
+   - Moreover, the Act could mandate that scammers provide clear disclosures when using AI technology to create synthetic content, ensuring transparency and accountability in their deceptive practices.
+
+3. **Victims**:
+   - The EU AI Act would prioritize the protection of consumers and vulnerable individuals from falling victim to deepfake scams. It would require platforms to implement safeguards to prevent the spread of deceptive content and educate users about the risks associated with deepfake technology.
+   - Victims who have been deceived by fraudulent deepfake videos could seek recourse under the Act, including access to support services, legal remedies, and compensation for damages incurred as a result of the scam.
+   - The Act would also promote public awareness campaigns to educate individuals about the prevalence of deepfake technology and how to recognize and avoid potential scams, empowering users to make informed decisions and protect themselves from exploitation.
+
+By addressing the issue of deepfake videos within the framework of the EU AI Act, stakeholders can collaborate to combat fraudulent activities, safeguard trust in digital platforms, and uphold the integrity of public discourse and financial markets.
+
+* meeting <2024-03-21 Thu>  
+
+- ook policy makers als stakeholder
+- collaboratie tussen stakeholders (concreet platformen en policy makers), transparency, accountability => etische issues
+- platformen moeten best practices met elkaar delen
+- eventueel deze ook meenemen als deel van de oplossing
+- 
+voor oplossing ook europol, hebben ook bronnen
+
+in het bijzonder is er weinig collaboratie tussen bv social media platformen
+
+moet dus wel via scenario opgebouwd worden
+
+Jan bekijkt ook deepfakes maar bekijkt daar meer de positieve kanten van.
+
+Roeland Rengelink doet ook iets met AI act
+
+
+te vragen is GAI momenteel limited risk? 
+
+* <2024-04-12 Fri> overleg Prof Maathuis 
+video in combinatie met tekst, deep fake detectie
+wat zien we nu als AGI?  wat is AGI voor LLM / generatieve AI vs wat nu na LLM en generatieve AI?  zie https://agi-conference.org/2023/
+NLP trendanalyse
+5-10 experten
+post-chatGPT tijdperk 2022-2024 
+pre-chatGPT tijdperk 2017-2022
+podcast : 
+https://www.youtube.com/@lexfridman
+100-en transcripten
+TF-IDF
+n-grams, 2 en 3 grams
+
+beter focussen op videos
+
+links :
+https://towardsdatascience.com/topic-modelling-in-python-with-nltk-and-gensim-4ef0j3213cd21
+https://stackoverflow.com/questions/16645799/how-to-create-a-word-cloud-from-a-corpus-in-python
+https://machinelearningknowledge.ai/generating-unigram-bigram-trigram-and-ngrams-in-nltk/
+https://pub.towardsai.net/sentiment-analysis-in-python-using-flair-2911bd627bbe
+
+
+*<2024-05-06 Mon> overleg Prof Maathuis 
+
+[2:25 PM] Maathuis, Clara
+https://downsub.com/
+Download subtitles from Youtube, Viki, Viu, Wetv, Kocowa and more
+DownSub is a free web application that can download subtitles directly from Youtube, Drive, Viu, Vimeo, Viki, Wetv, Kocowa and more.
+https://www.media.io/top-list/best-youtube-subtitle-extractor.html
+
+
+- bijkomende stopwords definieren
+- token aanpak voor wordcloud en ngrams is ok
+- voor topic modelling willen we een document per community voor en na chatgpt (dus 4 documenten)
+- ontbrekende videos oplijsten en trachten met speechtotext (zie hierboven) toch tekst eruit te krijgen
+- link van tekst met timestamp is zeer belangrijk, toch mee te nemen
+- sentiment analysis : hier moet wel met zinnen gewerkt worden.
+- in report : intuitie is dat we van positief naar negatiever gaan.   te correleren met AI timeline.
+- in report : vooral spelen op safety, we zijn gegaan van "we kijken ernaar uit", "het is er", "het moet verbannen worden", "het is een gevaar"
