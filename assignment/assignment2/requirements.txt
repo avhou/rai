@@ -7,3 +7,6 @@ gensim
 scipy==1.12 
 flair
 wtpsplit
+SpeechRecognition
+PocketSphinx
+assemblyai

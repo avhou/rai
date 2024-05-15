@@ -1,8 +1,11 @@
 import os
+import sys
 
 import spacy
 import nltk
 from typing import *
+from model import *
+import csv
 
 nlp = spacy.load("en_core_web_trf")
 import en_core_web_trf
@@ -10,8 +13,9 @@ import en_core_web_trf
 parser = en_core_web_trf.load()
 
 nltk.download('stopwords')
+nltk.download('punkt')
 en_stop = set(nltk.corpus.stopwords.words('english'))
-additional_en_stop = {"um", "uh", "-", "[", "]"}
+additional_en_stop = {"um", "uh", "yeah", "blah", "-", "[", "]"}
 
 
 def should_include(token: spacy.tokens.token.Token) -> bool:
@@ -59,15 +63,22 @@ def clean_transcripts(file: str):
     print(f"transcripts file {file} was processed")
 
 
+def read_dataset(file: str) -> List[DataSource]:
+    with open(file, "r") as f:
+        csv.field_size_limit(sys.maxsize)
+        csvFile = csv.reader(f, delimiter=',', quotechar='"')
+        next(csvFile, None)
+        return [DataSource.from_csv_entry(line) for line in csvFile]
+
+def texts_for_category(category: str, sources: List[DataSource]) -> Iterator[str]:
+    return (source.text for source in sources if source.category == category)
+
+def tokens_for_category(category: str, sources: List[DataSource]) -> Iterator[str]:
+    for text in texts_for_category(category, sources):
+        for token in tokenize(text):
+            yield token
+
+
 if __name__ == "__main__":
-    import nltk
-    from nltk import bigrams
-    from nltk import trigrams
-
-    tokens = list(read_transcripts_lines("scientific-after/transcripts-cleaned.txt"))
-    bi_tokens = bigrams(tokens)
-    tri_tokens = trigrams(tokens)
-
-    fdist = nltk.FreqDist(bi_tokens)
-    for k,v in sorted(fdist.items(), key=lambda x:int(x[1]), reverse=True)[:10]:
-        print(k, v)
+    for datasource in read_dataset("dataset.csv"):
+        print(f"category : {datasource.category}, num : {datasource.num}")

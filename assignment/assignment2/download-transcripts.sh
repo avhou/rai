@@ -10,10 +10,13 @@ mkdir scientific-after
 mkdir non-scientific-before
 mkdir non-scientific-after
 
-yt-dlp --write-auto-sub --convert-subs srt --skip-download -o "scientific-before/%(autonumber)03d.%(ext)s" -a scientific-before.txt
-yt-dlp --write-auto-sub --convert-subs srt --skip-download -o "scientific-after/%(autonumber)03d.%(ext)s" -a scientific-after.txt
-yt-dlp --write-auto-sub --convert-subs srt --skip-download -o "non-scientific-before/%(autonumber)03d.%(ext)s" -a non-scientific-before.txt
-yt-dlp --write-auto-sub --convert-subs srt --skip-download -o "non-scientific-after/%(autonumber)03d.%(ext)s" -a non-scientific-after.txt
+yt-dlp --write-auto-sub --convert-subs srt -x --audio-format mp3 -o "scientific-before/%(autonumber)03d-%(upload_date)s-.%(ext)s" -a scientific-before.txt
+yt-dlp --write-auto-sub --convert-subs srt -x --audio-format mp3 -o "scientific-after/%(autonumber)03d-%(upload_date)s-.%(ext)s" -a scientific-after.txt
+yt-dlp --write-auto-sub --convert-subs srt -x --audio-format mp3 -o "non-scientific-before/%(autonumber)03d-%(upload_date)s-.%(ext)s" -a non-scientific-before.txt
+yt-dlp --write-auto-sub --convert-subs srt -x --audio-format mp3 -o "non-scientific-after/%(autonumber)03d-%(upload_date)s-.%(ext)s" -a non-scientific-after.txt
+
+cp scientific-before-audio-to-text/*.txt scientific-before
+cp non-scientific-before-audio-to-text/*.txt scientific-before
 
 python3 srt_to_txt.py scientific-before/*.srt
 cat scientific-before/*.txt | uniq > scientific-before/transcripts.txt
