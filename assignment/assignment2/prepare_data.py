@@ -1,3 +1,4 @@
+import json
 from typing import *
 import csv
 import os
@@ -7,6 +8,8 @@ from nltk.tokenize import sent_tokenize
 from wtpsplit import WtP
 
 wtp = WtP("wtp-canine-s-12l")
+
+
 # for sentence in wtp.split(content, lang_code="en"):
 
 def source_enumeration(source: str) -> List[Tuple[str, int]]:
@@ -30,7 +33,8 @@ def deduplicate(file: str) -> Tuple[bool, str]:
 def prepare_data():
     print(f"preparing data")
     pattern = re.compile(r"(\d{3})-(.*)-(.*)")
-    youtube_sources = ["scientific-before.txt", "scientific-after.txt", "non-scientific-before.txt", "non-scientific-after.txt"]
+    youtube_sources = ["scientific-before.txt", "scientific-after.txt", "non-scientific-before.txt",
+                       "non-scientific-after.txt"]
     folders = ["scientific-before", "scientific-after", "non-scientific-before", "non-scientific-after"]
     with open("dataset.csv", "w") as csvfile:
         writer = csv.writer(csvfile, delimiter=',', quotechar='"')
@@ -46,7 +50,7 @@ def prepare_data():
                 if len(matches) == 1:
                     match = re.search(pattern, matches[0])
                     if match:
-                       date = match.groups()[1]
+                        date = match.groups()[1]
                     (has_many_lines, content) = deduplicate(os.path.join(folder, matches[0]))
                 else:
                     print(f"could not find video with num {num} in folder {folder} (source {youtube_source})!")
@@ -54,5 +58,64 @@ def prepare_data():
 
     print("done")
 
+
+def generate_sentences():
+    print(f"generating sentence files")
+    datasources = read_dataset("dataset.csv")
+    for category in ["scientific-before", "scientific-after", "non-scientific-before", "non-scientific-after"]:
+        num_sentences = 0
+        with open(f"sentences-{category}.txt", "w") as f:
+            for sentence in sentences_for_category(category, datasources):
+                num_sentences += 1
+                f.write(f"{sentence}{os.linesep}")
+        print(f"wrote {num_sentences} sentences in file for category {category}")
+
+    print("done")
+
+
+def generate_annotated_sentences():
+    print(f"generating annotated sentence files")
+    datasources = read_dataset("dataset.csv")
+    for category in ["scientific-before", "scientific-after", "non-scientific-before", "non-scientific-after"]:
+        num_sentences = 0
+        with open(f"sentences-annotated-{category}.csv", "w") as csvfile:
+            writer = csv.writer(csvfile, delimiter=',', quotechar='"')
+            writer.writerow(["category", "youtube", "num", "date", "audio-to-speech", "text"])
+            for source in datasources:
+                if source.category == category:
+                    for sentence in sentences(source.text, source.audio_to_speech):
+                        writer.writerow(
+                            [category, source.youtube, str(source.num).zfill(3), source.date.strftime("%Y%m%d"),
+                             source.audio_to_speech, sentence])
+                        num_sentences += 1
+        print(f"wrote {num_sentences} annotated sentences in file for category {category}")
+
+    print("done")
+
+def write_token_documents():
+    # text = [["this", "is", "a", "sentence"], ["this", "is", "a", "second", "sentence"]]
+    # print(text)
+    # with open("test.txt", "w") as f:
+    #    json.dump(text, f)
+    # with open("test.txt", "r") as f:
+    #     retrieved_texts = json.load(f)
+    #     print(retrieved_texts)
+
+    def write_tokens(category: str, kind: str, source: str):
+        print(f"write tokens for category {category}, kind: {kind}, source: {source}")
+        datasources = read_dataset("dataset.csv") if source == "full-text" else read_dataset(f"sentences-annotated-{category}.csv")
+        with open(f"tokens-{category}-{kind}-{source}.txt", "w") as f:
+            texts = [nltk.word_tokenize(datasource.text.lower()) for datasource in datasources if datasource.category == category] if kind == "no-preprocessing" else [list(tokenize(datasource.text)) for datasource in datasources if datasource.category == category]
+            json.dump(texts, f)
+
+    for category in ["scientific-before", "scientific-after", "non-scientific-before", "non-scientific-after"]:
+        for kind in ["no-preprocessing", "preprocessing"]:
+            for source in ["full-text", "sentences"]:
+                write_tokens(category, kind, source)
+    print(f"done")
+
 if __name__ == "__main__":
-    prepare_data()
+    # prepare_data()
+    # generate_sentences()
+    # generate_annotated_sentences()
+    write_token_documents()

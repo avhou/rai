@@ -80,3 +80,11 @@ https://www.media.io/top-list/best-youtube-subtitle-extractor.html
 - sentiment analysis : hier moet wel met zinnen gewerkt worden.
 - in report : intuitie is dat we van positief naar negatiever gaan.   te correleren met AI timeline.
 - in report : vooral spelen op safety, we zijn gegaan van "we kijken ernaar uit", "het is er", "het moet verbannen worden", "het is een gevaar"
+
+
+from #6335 (comment) :
+
+    Can you add the upload date into the name of the file?
+
+You could do it like this:
+-o "%(title)s [%(id)s] %(upload_date)s.%(ext)s"

@@ -6,6 +6,8 @@ import nltk
 from typing import *
 from model import *
 import csv
+from wtpsplit import WtP
+
 
 nlp = spacy.load("en_core_web_trf")
 import en_core_web_trf
@@ -16,6 +18,7 @@ nltk.download('stopwords')
 nltk.download('punkt')
 en_stop = set(nltk.corpus.stopwords.words('english'))
 additional_en_stop = {"um", "uh", "yeah", "blah", "-", "[", "]"}
+wtp = WtP("wtp-canine-s-12l")
 
 
 def should_include(token: spacy.tokens.token.Token) -> bool:
@@ -79,6 +82,20 @@ def tokens_for_category(category: str, sources: List[DataSource]) -> Iterator[st
             yield token
 
 
+def sentences_for_category(category: str, sources: List[DataSource]) -> Iterator[str]:
+    for source in sources:
+        if source.category == category:
+            return sentences(source.text, source.audio_to_speech)
+
+def sentences(text: str, audio_to_speech: bool) -> Iterator[str]:
+    if audio_to_speech:
+        for sentence in nltk.sent_tokenize(text, language="english"):
+            yield sentence
+    else:
+        for sentence in wtp.split(text, lang_code="en", style="ud", threshold=0.01):
+            yield sentence
+
+
 if __name__ == "__main__":
-    for datasource in read_dataset("dataset.csv"):
-        print(f"category : {datasource.category}, num : {datasource.num}")
+    for sentence in sentences_for_category("scientific-before", read_dataset("dataset.csv")):
+        print(f"sentence length: {len(sentence)}")
