@@ -2,7 +2,7 @@
 title: "IM0802-232434M - Responsible Artificial Intelligence assignment 2"
 subtitle: "Pre and post ChatGPT Artificial General Intelligence topic and sentiment analysis"
 author: "Alexander Van Hecke (852631385)"
-abstract: "Artificial General Intelligence (AGI) has been a heavily debated topic for many years.  The introduction of ChatGPT changed the narrative about AGI.  This research aims to extract and analyze the text from talks and interviews about AGI found on Youtube.  Both expert and non-expert opinions are considered and compared.  We consider ethical issues such as safety concerning the use of AGI systems."
+abstract: "Artificial General Intelligence (AGI) has been a heavily debated topic for many years.  The introduction of ChatGPT was a milestone in the field of AI.  This research aims to extract and analyze transcripts from talks and interviews about AGI found on Youtube.  Both expert and non-expert opinions are considered and compared.  We analyze the discussed topics as well as the general sentiment (positive or negative).  We consider ethical issues such as safety concerning the use of AGI systems."
 institute: "OU"
 date: \today
 geometry: margin=2.5cm
@@ -14,90 +14,171 @@ papersize: a4
 
 # Introduction
 
-In this essay we want to describe a dark scenario ``Surely this is something I can trust?''.  In this scenario we discuss Peter, a young man who is just starting to get settled, is in a stable financial situation and has a couple of years of working experience.  Peter tries to stay informed about current events and uses diverse sources of information for this.  He watches the news on national television regularly, but also checks several social media feeds to see what's happening in the world.  The social media companies decide what Peter gets to see on his feed, and they try to maximize his screen time, as more screen time means more advertisements can be shown to Peter.  Trying to maximize screen time and selling ads is the business model of the social media companies, and they distribute all kinds of media (text, short stories, videos, etc) to maximize their profits.
+The field of Artificial Intelligence (AI) is vast.  Many different approaches to intelligence have been studied, including model based approaches, rule driven systems and data driven approaches (machine learning and deep neural engineering).  Many of these systems excel at certain tasks, sometimes surpassing human capabilities for these specific tasks.  Artificial General Intelligence (AGI) aims to be a kind of AI that matches or surpasses human capabilities across a wide range of cognitive tasks.
 
-One day, Peter gets a video on his feed where a well known financial journalist Michael praises an investment.  As Peter has been doing well financially lately, he has some financial reserves and he has already been thinking about investing his money in some way.  However, since he is no financial expert, he didn't know how to get started.  This seems like an excellent opportunity to Peter, since he knows Michael from national television where he often discusses economy and financial topics on the news.  Peter fully trusts Michael, as he always has a nuanced opinion and generally seems very knowledgeable about investments.  After looking at the website of the investment, he decides it looks good and invests all his money in this opportunity.
+AGI has been debated for many years.  A model to compare AGI models is introduced in [@agi1].  An approach to create a library to contain the knowledge and datasets needed for AI models to learn is introduced in [@agi2].  These are technical approaches to achieve AGI.  
 
-Unfortunately, the video was a deepfake video.  Fraudster Kris created this video using freely available software, and was able to use a lot of video and speech from Michael's television appearances.  Kris was abusing Michael's good name and financial reputation to lure people in a fake investment.  Needless to say, all money invested goes straight to Kris.  Michael was not aware of this video, and certainly does not endorse the investment praised in the deepfake video.
+However, there are risks involved in achieving AGI, and this has been studied in depth as well.  A systematic review of risks associated with AGI is done in [@risks1].  The authors identify several risks, including AGIs with poor ethics, morals and values, and AGIs being given unsafe goals.  Several ethical issues and risks are described in [@risks2].  The authors discuss a wide variety of issues, such as the lack of trust, transparency, privacy, accountability and liability, the possible loss of human decision making, and unfairness.  
 
-This scenario is happening today.  Two very recent cases in Belgium illustrate this.  A deepfake video of financial journalist Michael Van Droogenbroeck was distributed on social media [@vrt1], and news anchor Annelies Van Herck appeared in a deepfake video where she advertises a ``get rich quick'' game [@vrt2].  These videos were widely distributed on social media, and lots of people fell for this fraud.  Social media companies are aware of this issue [@meta;@google] but don't do enough to prevent this from happening as it goes against their business model.  Meanwhile, fraudsters are getting away with this and trick people in their fake investments.
+Not everyone is convinced AGI is possible.  There may be fundamental limitations to what an AGI can achieve.   The authors of [@limits1] argue that AI agents are limited in their ability to leverage new affordances.  According to the authors, an algorithmic approach as leveraged by AI agents is not able to generalize to unforeseen (or untrained) uses of an object, for example.  The authors of [@limits2] state AGI will never be achieved.  They acknowledge that the performance of special purpose AIs has been impressive in some cases, but claim we have not come much closer to AGI.
 
-# Discussion of the issue
+The introduction of ChatGPT [@chatgpt] on November 30, 2022 changed the narrative about AI.  Did OpenAI, the company behind ChatGPT, achieve AGI?  The authors of [@chatgpt1] investigate whether the technique of human-centric functional modeling (HCFM) can be used to provide a functional definition of intelligence that can be used to confirm whether ChatGPT can be classified as an AGI.  They conclude several HCFM criteria are not met.  The authors of [@chatgpt2] designate ChatGPT as an AGI.
 
-## Sources 
+In this paper we want to examine the opinions on AGI of both the scientific and the non-scientific community.  We use natural language processing (NLP) to analyze the transcripts of a collection of youtube videos, and try to compare the topics discussed and the sentiment about AGI in these communities both before and after the introduction of ChatGPT.
 
-Deepfake videos are pervasive in many media.  Recently, hyper-realistic videos have emerged that depict someone saying and doing things that never happened.  Given the reach and speed of social media, convincing deepfakes can quickly reach millions of people and have negative impacts on our society [@scholar1].  Academic research has focused not only on generative models and generative adverserial networks (GANs) capable of generating deepfake videos, but also on ways to detect deepfake videos by these architectures.  A convolutional neural network (CNN) with a classifier network is proposed by the authors of [@scholar2] for the detection of deepfake videos.  They extract faces from videos and compare these against a face dataset [@facedataset] to detect deepfake videos.  Their technique works especially well on videos generated by an autoencoder.  The use of transfer learning is examined in [@scholar3].  Transfer learning in autoencoders and a combination of CNN and Recurrent Neural Network (RNN) models are used to increase detection rates of deepfake videos when these are generated using unseen manipulations and datasets.  They conclude fine-tuned models yield better accuracy as compared to models trained from scratch.  A survey of different manipulation techniques, public datasets and performance evaluation for several categories of deepfakes is given in [@ass1].  Some of the shortcomings of the current detection techniques are described in [@ass2].
+# Goal
 
-Several news anchors of VRT, a public news outlet in Belgium [@vrt], have been the subject of deepfake videos.   Michael Van Droogenbroeck, a financial journalist working for VRT, featured in a deepfake video that was distributed on social media.  In this video, he praised a fake investment opportunity.  Colleague Annelies Van Herck, news anchor at VRT, appeared in another deepfake video where she was depicted as advertising an online ``get rich quick'' game.  Fraudsters were behind these videos, having mainly financial motives.   Given the yield of social media and the trust the public places in these news anchors, this has resulted in many people falling for the fraud.
+In this paper, we aim to investigate whether the introduction of ChatGPT changed the topics discussed in the scientific and non-scientific community.  We formulate a first research question.
 
-Deepfake videos appear in popular media as well.  The BBC TV show ``The Capture'' [@capture] centers around the idea of deepfake videos being created to explicitly discredit people.  This leads to unjustified charges of kidnapping and even murder.  In this TV show, the validity of the deepfake evidence is called in to question by a detective and everything ends well.  However, it does illustrate a point : deepfake videos can not only be used for financial gain, but also to discredit and falsely accuse (political) opponents and organisations.
+> **RQ 1 : Did the introduction of ChatGPT change the topics discussed in the scientific and non-scientific AGI community? **
 
-## Use of AI in the issue
+Furthermore, we are interested in investigating whether sentiment about AGI has changed after the introduction of ChatGPT.   Risks related to AGI were already studied before the introduction of ChatGPT, but new questions were raised, e.g. the potential for abuse, the unjustified use of source datasets, copyright issues, and hallucination of results.  We formulate a second research question.
 
-We argue that in this case, the use of AI is not only causing the problem, but is also **part** of the solution : 
+> **RQ 2 : Did the introduction of ChatGPT change the general sentiment about AGI in the scientific and non-scientific AGI community? **
 
-- deepfake videos can be generated using generative autoencoders or GANs.  Academic research on the topic is mostly freely available, and more importantly the code implementing this research is often freely available as well on platforms like GitHub.  This implies these implementations are open to use by anyone, free of charge.  Given the increasing volumes of training data available (datasets of video, text, speech, ...), this gives fraudsters powerful tools to generate convincing deepfake videos.  Europol has found that for fraudsters lacking the necessary skills, ``deepfake as a service'' platforms [@europol1] exist.  
-- AI can be used as part of the solution as well, by devising solutions for detecting deepfake videos.  Note this is only part of the solution.  A technical solution without the necessary legal framework (regulation and penal laws for abuse) and sufficient awareness in social media companies, will not alleviate the problem.  Social media are already aware of the problem [@meta;@google], but are incentivized not to intervene in the distribution of deepfake videos, which are often highly popular and hence, generate a lot of ad revenue.
+To start off, we will look at the characteristics of the data used and discuss pre-processing steps.  Then, we will discuss design methodology and analyze the obtained results.  Finally, we will take into account some broader ethical issues such as safety.
 
-## Stakeholders and consequences
+# Data analysis
 
-Several different stakeholders can be identified in this scenario.
+## Dataset description {#sec:dataset}
 
-**(i)** victims who get tricked into fake investments lose money and give away confidential financial information.  Often these victims are pressured to invest more and more money.  This can lead to serious financial problems for the people involved, leading to a deteriorating quality of life.  **(ii)** The people whose identity is being abused (news anchors in our example).  They have to endure reputational damage, and may get criticized by people for something they weren't even aware of.   Related to this, **(iii)** the companies affiliated with the identity victims endure reputational damage as well.  Their businesses might be impacted.  **(iv)** The fraudsters creating and distributing the deepfake videos are clearly stakeholders as well.  They can make a lot of money with relatively little effort by abusing people's trust.  **(v)** Social media companies have clear financial incentives to distribute popular videos, even if they are deepfake videos.  More views yield larger ad revenues.  However, they risk facing stricter regulation.  **(vi)** Companies advertising on social media platforms are stakeholders as well.  They do not want to be associated with these kinds of deepfake videos as they would risk reputational damage.  **(vii)** Policy decision makers (e.g. European commission) need to invest time and effort in regulating social media companies, video generation software, and passing penal laws to take legal action against offenders.  Finally, **(viii)** resellers specialised in video manipulation software may not have bad intentions, but may face increased scrutiny nonetheless.  This is summarized in Table \ref{table:stakeholders}.
+We used a manually curated list of Youtube videos as input for our analysis.  The list was created by Professor Clara Maathuis of the Open University [@ou] and included experts both from the scientific community and the non-scientific community.  Table \ref{table:experts} summarizes the experts included in the list.
+
+| community      | experts                                                                                                                              |
+|:---------------|:-------------------------------------------------------------------------------------------------------------------------------------|
+| scientific     | Ben Goertzel, Ray Kurzweil, Nick Bostrom, Roman V. Yampolskiy, Ilya Sutskever, Yann LeCun, Yoshua Bengio, Andrej Karpathy, Andrew Ng |
+| non-scientific | Elon Musk, Sam Altman, Mark Zuckerberg, Bill Gates                                                                                   |
+
+Table:  Experts included \label{table:experts}
 
 
-| stakeholder                                     | consequence                                |
-|:------------------------------------------------|:-------------------------------------------|
-| victim                                          | financial loss, data privacy               |
-| identity victim                                 | abuse of identity                          |
-| companies affiliated with identity victims      | reputation damage                          |
-| fraudster                                       | financial gain                             |
-| social media companies                          | financial gain, subject to more regulation |
-| companies advertising on social media           | reputation damage                          |
-| policy decision makers                          | regulation, legal action                   |
-| deepfake and special effects software resellers | regulation                                 |
+Several people had to be excluded from both communities as no videos were found before or after the introduction of ChatGPT.  Searches were done using both Youtube and Google Videos search.   Pei Wang, Cassio Pennachin, Ian Goodfellow and Yuval Noah Harari were excluded for this reason from the scientific community.  Other important voices in the non-scientific community such as Jef Bezos, Jack Ma and Chew Sho Zi were excluded as their opinions are less related to AGI. 
 
-Table:  Stakeholders and consequences \label{table:stakeholders}
 
-## Why is this an issue?
+When available, the automatically generated transcripts from Youtube were used as input text.   However, these transcripts were not avaiable for all videos.  For these videos, we extracted the audio part of the videos and looked at speech-to-text solutions to extract the text from these audio fragments.  Several speech-to-text solutions are available, and we evaluated the `SpeechToRecognition` project [@speechrecognition] using the offline `Sphinx` engine.  However, this mostly produced nonsensical transcripts.  The transcripts generated by the (commercial) solution provided by AssemblyAI [@assemblyai] where evaluated manually and these results were of much higher quality.  A dataset containing all transcript text and some necessary metadata was created.  Table \ref{table:features} summarizes the features of the dataset.  Table \ref{table:counts} summarizes the number of documents and tokens in the scientific and non-scientific community, both before and after the introduction of ChatGPT.
 
-Several ethical issues can be identified in this scenario.
 
-- The **(data) privacy** of victims is violated.  Sensitive data such as financial and personal details fall into the wrong hands.
-- **Technological abuse**.  This is an example of a technology that can be used for good and bad, but in this scenario there is abuse for personal financial gain.
-- **Do no harm**.  This scenario is a fraudulent and harmful use of AI technology.  It can lead to financial and general quality of life issues for those involved as victims.  People whose identity is abused can suffer from serious reputational damage.
-- It is becoming increasingly difficult to see **what is real and what is not**.  People not trained in recognizing deepfake videos may have a hard time detecting them.
-- There is little **accountability** of fraudsters and social media companies.  Social media companies are aware of the issue and try to counter this with technology, but at the same time claim to have little responsibility when it comes to the content distributed on their platforms.  Fraudsters should be held accountable for posting harmful deepfake videos.
-- **Accountability** of other stakeholders.  Should people not falling for the fraud but sharing the deepfake video nonetheless be held accountable as well?
-- **Transparency** from social media companies.  When trying to come up with solutions to deepfake video abuse, it is important to be transparent about how, when and why these solutions will be implemented.  Note these solutions could be using technology (deepfake video detection), but they could also use people as part of the solution (factcheckers).
-- **Collaboration** between different stakeholders.  Firstly, policy decision makers and social media companies need to agree on how to deal with these kinds of issues, as trying to solve these issues is a complex problem.  Secondly, social media companies should share best practices around tackling this issue.  This is not happening right now, as there is a lot of competition between the different platforms.  When sharing best practices, this must be done using the scientific method, i.e. through peer reviewed papers containing enough details and not through web blogs containing very little detail [@meta;@google].
+| feature        | domain                                       | description                              |
+|:---------------|----------------------------------------------|:-----------------------------------------|
+| category       | {scientific, non-scientific}-{before, after} | The community the video belongs to       |
+| youtube        | url                                          | The URL of the Youtube video             |
+| num            | numeric                                      | The sequence number of the video         |
+| date           | date                                         | The date the video was posted on Youtube |
+| speech-to-text | boolean                                      | Text generated by speech-to-text?        |
+| text           | string                                       | Transcript text                          |
 
-Note that trying to steal money and personal information from victims is not a new problem, nor is it restricted to the use of AI.  People have always been trying to steal from other people.  Likewise, people have tried to pretend to be someone they aren't for financial gain.  The use of AI however, makes identity abuse easy and convincing.  We would argue AI is an accelerator for abuse in this case.
+Table:  Dataset features \label{table:features}
 
-# Solution
+| community      | ChatGPT | number of documents | number of tokens |
+|:---------------|---------|--------------------:|-----------------:|
+| scientific     | before  |                  29 | 160.961          |
+| scientific     | after   |                  28 | 138.561          |
+| non-scientific | before  |                   6 | 25.355           |
+| non-scientific | after   |                   7 | 29.788           |
 
-In our literature search, we have focused on ways to automatically detect deepfake videos [@scholar2;@scholar3].  In theory, this provides a solution for our scenario.  If deepfake videos can be detected, they can be banned and these kinds of frauds could be avoided.  However, it is not as simple as just being able to detect deepfake videos.  We believe that a solution will have to be multi-layered and will need to include aspects of **detection**, **transparency**, **collaboration**, **regulation** and **accountability**.  We discuss these aspects next, and focus on policy decision makers and social media companies as principal stakeholders.
+    Table:  Documents and tokens per community \label{table:counts}
 
-The **detection** of deepfake videos by social media companies is a prerequisite for being able to ban illegal or unwanted content.  Detection could be automatic or manual.  Automatic detection is the focus of the studied papers [@scholar1;@scholar2;@scholar3;@ass1;@ass2], but it has shortcomings.  Firstly, automatic detection of deepfake videos will never be 100% accurate.  This means some videos that are deepfake videos will not be identified as such.  Secondly, prohibiting every deepfake video detected also prohibits all legal, interesting and recreational uses of deepfake videos.  After all, technology might be able to detect a video is a deepfake, technology cannot (at this moment in time) determine what the video is about and whether this video could be potentially harmful if distributed. Therefore, manual judgement by factcheckers will remain an important aspect to ensure **fairness** for content creators.  After all, not all deepfake video authors have criminal intentions.  Meta recently announced [@ars] that instead of removing AI generated videos, they are looking into labeling videos as being "Made with AI".
+## Data pre-processing
 
-Assuming deepfake videos can be properly detected by machines, humans, or a combination of both, social media companies will need to be **transparant** about the criteria used for banning videos.  When is a video considered to be harmful?  This will need to take into account aspects like comedy and satire as well.  Transparency will lead to best practices, and best practices can be implemented by all relevant stakeholders.
+Several pre-processing steps were performed before doing the actual analysis of the transcripts.  
 
-**Collaboration** between different stakeholders is key.  Firstly, there will need to be collaboration between the different social media companies.  If not all social media companies uphold the same set of criteria, fraudsters can easily abuse this fact by avoiding platforms having strict criteria and choosing platforms having less strict criteria to distribute their content.  As of today, we don't see this kind of collaboration, because the different platforms are in a fierce competition against each other.  Each platform tries to get as big a share as possible of the global ad revenues market.  They are therefore incentivized to keep internal details of their respective platforms secret.  Secondly, collaboration between policy decision makers and social media companies is very important.  Policy decision makers will need to regulate, but need to take into account the technical complexities of operating social media platforms on a global scale as well.  Furthermore, AI technology is advancing at a rapid pace, meaning regulation and the implementation of this regulation will need to be kept up-to-date.
+Transcripts downloaded from Youtube are meant to be used as subtitles while watching the videos on Youtube.    They contain time indexes in order to show the right text at the right time, and may contain duplicate parts of a sentence as the video progresses in real time and the same part of a sentence may have to be shown for several time indexes.   Unfortunately, the use of these transcripts as subtitles also means very few (if any) punctuation marks are included.  After removal of time information and duplicate parts of sentences, we were left with a large blob of text (contiguous words) containing no sentence information.
 
-Many steps have already been taken for **regulation**.  The recently passed EU AI act does not ban deepfakes, but requires **transparency** from creators.  This includes people creating deepfake content, but also people or systems disseminating deepfake content like social media platforms.  The EU AI act mentions four categories of AI systems : minimal-risk (can be deployed without additional restrictions), limited-risk (risk of manipulation or deceit, transparency required), high-risk (potential to cause significant harm) and unacceptable risk (prohibited, thinks like general social scoring or subliminal manipulation).  Generative AI systems are categorized as limited-risk for now, but should perhaps be categorized as high-risk instead.  Europol has studied deepfakes as well [@europol1] and stresses that any regulation should take the perspective of law enforcement into account.  Of note here is that the EU AI act regulates the use of AI in Europe, but social media platforms have a global reach.  In particular, many of the most prominent social media platforms are located in the US, where generative AI regulation is very active but still in early stages.  The same can be said about China [@china], which also hosts a number of large social media platforms and is perhaps less transparant about policies than the EU or US.  If regulation is not equally strict across the globe, the risk of fraud remains.
+Having sentences rather than a collection of contiguous words is important for sentiment analysis, so sentence determination was necessary.  For the transcripts downloaded from youtube, no punctutation marks were available and wtpsplit [@wtpsplit] with the `wtp-canine-s-12l` model was used to automatically generate sentences from the contiguous words.  For the transcripts generated by AssemblyAI [@assemblyai], punctuation marks were included and the sentence tokenizer of the Natural language toolkit (NLTK) [@nltk] was used.
 
-**Mitigation strategies** could be considered as well.  This could include measures to educate the general public about deepfake technology (e.g. through ads on television, or through the education system), and fostering general digital literacy to enable people to discriminate between real and deepfake content.  Support for victims of deepfake abuse could come in the form of official complaint registration offices, guidance processes to recover from such abuse, or financial aid for those impacted.
+The tokenization of sentences included several filters and transformations.  The spaCy [@spacy] `en_core_web_trf` was used to detected separate tokens, and tokens were excluded if they were of length 1, consisted only of whitespace (e.g. tabs, newlines, spaces), were in the NLTK [@nltk] English stopword list, or were in an additonal, manually curated stopword list.   This additional stopword list was necessary as the transcripts contained a lot of filler words like 'uh', 'um' and 'yeah' and these showed up in the most frequently used words.   Finally, all tokens were lemmatized.
 
-Finally, **accountability** is important as well.  It encompasses two aspects : **(i)** people or organisations could be called on to answer for actions and decisions they have taken, and **(ii)** being transparant about actions and decisions.  We have discussed the transparency aspect for social media platforms before.  Unfortunately, we cannot expect fraudsters to be transparent about their actions or intentions.  Law enforcement will have to deal with the first aspect.
+Table \ref{table:pre-processing} summarized the different pre-processing steps.
 
-As a society, we are just getting to know generative AI in all its forms (large language models (LLM), image, audio and video generation, etc).  This will have a profound impact, as it will be increasingly difficult to know what content was generated by humans and what content was generated by AI.   AI generated content will be pervasive, and will not be limited to social media.  We will have to find ways to deal with this new reality in general.  Several iniatives have already been taken [@europol1;@europe1;@aiact], but many more will need to follow as AI technology progresses.
+| step                         | technology                        | description                                                                                            |
+|:-----------------------------|-----------------------------------|:-------------------------------------------------------------------------------------------------------|
+| cleanup youtube transcripts  | Python                            | Remove time indexes, remove duplicate parts of sentences                                               |
+| sentence determination       | wtsplit [@wtpsplit], NLTK [@nltk] | Split larger texts in coherent sentences                                                               |
+| tokenization filters         | spaCy [@spacy], NLTK [@nltk]      | Remove small tokens, stopwords, filler words ("um", "uh", "yeah", "blah", "-", "[", "]"), whitespaces. |
+| tokenization transformations | spaCy [@spacy]                    | Lemmatization of tokens                                                                                |
+
+Table:  Dataset features \label{table:pre-processing}
+
+
+# Methodology and Implementation
+
+## Research methodology and design
+
+We performed different analyses on the pre-processed data.
+
+Wordclouds are a simple and visual tool to highlight important (often used) words in a collection of texts.  It visualizes the most frequently used words, varying the fontsize of words to indicate relative importance of the word in the cloud.  Separate wordclouds were generated for the pre-processed data of the scientific and non-scientific community, both before and after the introduction of ChatGPT.
+
+An N-gram analysis (bigrams and trigrams) was performed on the pre-processed data.  N-grams give a general idea about the kinds of expressions often used in texts, and are a simple means to try to detect important subjects in texts.  Data was split in four groups (scientific community before ChatGPT, scientific community after ChatGPT, non-scientific community before ChatGPT, non-scientific community after ChatGPT) and was fed to N-gram (N=2,3) NLTK [@nltk] models.  
+
+The GenSim framework [@gensim] was used for a topic modeling analysis.  A Latent Dirichlet Allocation (LDA) model was trained on four tokenized and pre-processed documents (containing all tokens of scientific/non-scientific - before ChatGPT/after ChatGPT texts).  The model was asked to generate 100 possible topics, each containing 10 words.  The 6 most important topics, as determined by the heighest weight of the first word of the topic, were kept and visualised.
+
+Finally, a sentiment analysis was performed using the Flair framework [@flair].  Since the goal was to visualize the possible change of average sentiment over time, we split the transcripts in 2 groups (scientific and non-scientific).  For each transcript in each group, sentences were generated and fed to the flair `sentiment` Classifier.   This yielded a score between 0 and 1 and a label (POSITIVE or NEGATIVE) for each sentence.  A positive score was kept as is, and a negative score was multiplied by -1 to yield a value between -1 and 0.  These corrected score were averaged per transcript, yielding a date (the date the Youtube video was uploaded) and an average sentiment score.  Repeating this procedure for all transcripts in both groups allowed us to visualize the possible change of sentiment towards AGI in the scientific and non-scientific community. 
+
+## Implementation
+
+All code and data is available in a github repository [@github].  We recap the most important files here : 
+
+- `srt_to_txt.py` contains the code to transform srt subtitle transcripts as download from youtube to contiguous words
+- `utils.py` contains several utility methods to load transcripts and their metadata, to iterate over tokens of transcripts, etc
+- `prepare_data.py` contains a script to pre-generate input data used in the jupyter notebooks (e.g. tokenized sentences for all transcripts of a community before or after the introduction of ChatGPT)
+- `wordcloud.ipynb` is a jupyter notebook that performs the wordcloud analysis
+- `ngrams.ipynb` is a jupyter notebook that performs the N-gram analysis
+- `topic.ipynb` is a jupyter notebook that performs the topic modeling analysis
+- `sentiment_analysis.ipynb` is a jupyter notebook that performs the sentiment analysis
+
+# Evaluation and Results
+
+## RQ 1
+
+In order to evaluate RQ 1, we look at the results of the wordcloud, N-gram and topic modeling analysis.  
+
+Figures @{fig:wordcloud-scientific-before} and @{fig:wordcloud-scientific-after} illustrate the most important words of discussions in the scientific community before and after the introduction of ChatGPT.  A lot of words overlap between these two groups of transcripts.  The transcripts before ChatGPT seem to be mostly positive (good, human, people, right), whereas the transcripts after ChatGPT contain more negative words (problem, different, change).
+
+![Wordcloud (scientific community before ChatGPT)](figures/wordcloud-scientific-before.png){#fig:wordcloud-scientific-before height=50% width=50%}
+
+![Wordcloud (scientific community after ChatGPT)](figures/wordcloud-scientific-after.png){#fig:wordcloud-scientific-after height=50% width=50%}
+
+
+Figures @{fig:wordcloud-non-scientific-before} and @{fig:wordcloud-non-scientific-after} illustrate the most important words of discussions in the non-scientific community before and after the introduction of ChatGPT.  We see the same pattern as in the scientific community.  The discussions after ChatGPT seem to contain more negative words (problem, bad, hard).
+
+![Wordcloud (non-scientific community before ChatGPT)](figures/wordcloud-non-scientific-before.png){#fig:wordcloud-non-scientific-before height=50% width=50%}
+
+![Wordcloud (non-scientific community after ChatGPT)](figures/wordcloud-non-scientific-after.png){#fig:wordcloud-non-scientific-after height=50% width=50%}
+
+Bigrams are a very simple and limited language model.  Nevertheless, we see interesting patterns arise in bigram data for the scientific community, see Figure @{fig:bigrams}.  The conversation seems to have shifted from machine learning and deep learning (before ChatGPT) to large language models (LMM) and super intelligence (after ChatGPT).  We do not see the same shift for the non-scientific community, where the bigrams do not seem to contain any useful information.   Of note however is that OpenAI is one of the top 10 bigrams after the introduction of ChatGPT.
+
+![Bigrams](figures/ngram-bigrams.png){#fig:bigrams}
+
+Trigrams (see Figure @{fig:trigrams}) should be able to capture a bit more context than bigrams.  In the scientific community, we see focus shift from traditional techniques like deep neural nets and self supervised learning before ChatGPT to large language models after ChatGPT.   There seems to more attention on human level intelligence and AI.  The non-scientific community seems to shift towards a more negative vision after the introduction of ChatGPT, as evidenced by the mention of "brave new world" and "world war iii".
+
+![Trigrams](figures/ngram-trigrams.png){#fig:trigrams}
+
+
+Figures @{fig:topic-modeling-scientific-before} and @{fig:topic-modeling-scientific-after} illustrate the 6 most important topics determined by an LDA model for the scientific community.  Few relevant topics seem to have been extracted by the model.  Topic 6 of the scientific community before ChatGPT seems to point in the direction of possible problems with AGI, and topic 3 of the scientific community after ChatGPT seems to be about super intelligence, but few conclusions can be drawn from these results.
+
+![Topic modeling (scientific community before ChatGPT)](figures/topic-modeling-scientific-before.png){#fig:topic-modeling-scientific-before}
+
+![Topic modeling (scientific community after ChatGPT)](figures/topic-modeling-scientific-after.png){#fig:topic-modeling-scientific-after}
+
+Figures @{fig:topic-modeling-non-scientific-before} and @{fig:topic-modeling-non-scientific-after} illustrate the 6 most important topics determined by an LDA model for the non-scientific community.  Here, the focus seems to have shifted from topics about climate change (Topic 4) and (super)human-level intelligence (Topic 6) before ChatGPT to discussions about the replacement of workforce by AGI (Topic 1) and a breakthrough accomplished by the GPT-4 model (Topic 3) after ChatGPT.  
+
+It appears an LDA model was not able to capture many relevant topics given the (very) limited dataset we used.  It would be interesting to see if this can be improved by feeding it more data.
+
+![Topic modeling (non-scientific community before ChatGPT)](figures/topic-modeling-non-scientific-before.png){#fig:topic-modeling-non-scientific-before}
+
+![Topic modeling (non-scientific community after ChatGPT)](figures/topic-modeling-non-scientific-after.png){#fig:topic-modeling-non-scientific-after}
+
+## RQ 2
+
+
+
+# Discussion
+
+zeker te vermelden : weinig data non-scientific.   interessant om te doen met meer data
 
 # Conclusions
 
-In this essay, we have looked at the abuse of deepfake videos by fraudsters for personal financial gain and investigated some technical solutions [@scholar1;@scholar2;@scholar3] for the detection of deepfake videos.  Detection accuracy of deepfake videos is good, but we lack the means to automatically judge whether the content of a deepfake video should be considered harmful.  
-
-It is our opinion that we cannot rely on automatic methods alone to tackle this issue.  A solution will need to be multi-layered, taking into account aspects of **detection**, **transparency**, **collaboration**, **regulation** and **accountability**.  The problem is aggravated by the global reach of social media platforms, meaning global consensus on best practices, regulation and law enforcement will have to be reached.  Given the proper regulation and transparency, comedy, satire and recreational deepfake videos will remain justified and legitimate uses of this powerful AI technology.
-
+zeker te vermelden : weinig data non-scientific.   interessant om te doen met meer data
 
 # References
 
