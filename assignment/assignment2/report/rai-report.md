@@ -168,15 +168,50 @@ It appears an LDA model was not able to capture many relevant topics given the (
 
 ![Topic modeling (non-scientific community after ChatGPT)](figures/topic-modeling-non-scientific-after.png){#fig:topic-modeling-non-scientific-after}
 
+Note that the evaluations described in this section are all subjective, as an interpretation of the words and topics is done.  Taking this remark into account, we could carefully conclude for RQ 1 that there is indeed a difference in the topics discussed in the scientific and non-scientific community before and after the introduction of ChatGPT.  Topics discussed after ChatGPT was introduced appear to be more about problems and risks associated with the use of AGI-like systems like ChatGPT.
+
 ## RQ 2
 
+The evaluation of RQ 1 was mostly subjective.  For the evaluation of RQ 2, we try to take a more objective approach by using a sentiment analysis model.  We also want to look at the general trend over time, i.e. see in which direction the sentiment evolves.  If the slope of the trend line is negative, the sentiment is getting more negative over time.
 
+Figure @{fig:sentiment-scientific} illustrates the general sentiment evolution over time for the scientific community.  The trend is negative over time.  Looking at the sentiment for transcripts before the introduction of ChatGPT (Figure @{fig:sentiment-scientific-before}) shows that the slope of the trend line was negative.  Looking at the sentiment for transcripts after the introduction of ChatGPT (Figure @{fig:sentiment-scientific-after}) shows that the slope is decreasing more than before the introduction of ChatGPT, even though the difference in slope before and after the introduction of ChatGPT is minor.   In other words, the general decrease in sentiment is partly explained by the introduction of ChatGPT.  Slope values are summarized in Table \ref{table:slopes-scientific}.
+
+![Sentiment analysis over time (scientific community)](figures/sentiment-scientific.png){#fig:sentiment-scientific}
+
+![Sentiment analysis before ChatGPT (scientific community)](figures/sentiment-scientific-before.png){#fig:sentiment-scientific-before}
+
+![Sentiment analysis after ChatGPT (scientific community)](figures/sentiment-scientific-after.png){#fig:sentiment-scientific-after}
+
+| community  | ChatGPT          | slope       |
+|------------|------------------|-------------|
+| scientific | before and after | -1.5000E-06 |
+| scientific | before           | -2.0660E-06 |
+| scientific | after            | -3.1671E-06 |
+
+Table: Slope values for scientific community \label{table:slopes-scientific}
+
+
+Figure @{fig:sentiment-non-scientific} illustrates the general sentiment evolution over time for the non-scientific community.  Again, the trend is negative over time.  Looking at the sentiment for transcripts before the introduction of ChatGPT (Figure @{fig:sentiment-non-scientific-before}) shows that the slope of the trend line was negative.  Looking at the sentiment for transcripts after the introduction of ChatGPT (Figure @{fig:sentiment-non-scientific-after}) shows that the slope is decreasing more than before the introduction of ChatGPT.   In other words, the general decrease in sentiment is partly explained by the introduction of ChatGPT.  Slope values are summarized in Table \ref{table:slopes-non-scientific}.
+
+![Sentiment analysis over time (non-scientific community)](figures/sentiment-non-scientific.png){#fig:sentiment-non-scientific}
+
+![Sentiment analysis before ChatGPT (non-scientific community)](figures/sentiment-non-scientific-before.png){#fig:sentiment-non-scientific-before}
+
+![Sentiment analysis after ChatGPT (non-scientific community)](figures/sentiment-non-scientific-after.png){#fig:sentiment-non-scientific-after}
+
+| community      | ChatGPT          | slope       |
+|----------------|------------------|-------------|
+| non-scientific | before and after | -3.3903E-06 |
+| non-scientific | before           | -7.0276E-07 |
+| non-scientific | after            | -1.0154E-05 |
+
+Table: Slope values for non-scientific community \label{table:slopes-non-scientific}
 
 # Discussion
 
-zeker te vermelden : weinig data non-scientific.   interessant om te doen met meer data
+zeker te vermelden : weinig data non-scientific.   interessant om te doen met meer data. 
 
-# Conclusions
+# Conclusion
 
 zeker te vermelden : weinig data non-scientific.   interessant om te doen met meer data
 
