@@ -156,17 +156,9 @@ Trigrams (see Figure @{fig:trigrams}) should be able to capture a bit more conte
 
 Figures @{fig:topic-modeling-scientific-before} and @{fig:topic-modeling-scientific-after} illustrate the 6 most important topics determined by an LDA model for the scientific community.  Few relevant topics seem to have been extracted by the model.  Topic 6 of the scientific community before ChatGPT seems to point in the direction of possible problems with AGI, and topic 3 of the scientific community after ChatGPT seems to be about super intelligence, but few conclusions can be drawn from these results.
 
-![Topic modeling (scientific community before ChatGPT)](figures/topic-modeling-scientific-before.png){#fig:topic-modeling-scientific-before}
-
-![Topic modeling (scientific community after ChatGPT)](figures/topic-modeling-scientific-after.png){#fig:topic-modeling-scientific-after}
-
 Figures @{fig:topic-modeling-non-scientific-before} and @{fig:topic-modeling-non-scientific-after} illustrate the 6 most important topics determined by an LDA model for the non-scientific community.  Here, the focus seems to have shifted from topics about climate change (Topic 4) and (super)human-level intelligence (Topic 6) before ChatGPT to discussions about the replacement of workforce by AGI (Topic 1) and a breakthrough accomplished by the GPT-4 model (Topic 3) after ChatGPT.  
 
 It appears an LDA model was not able to capture many relevant topics given the (very) limited dataset we used.  It would be interesting to see if this can be improved by feeding it more data.
-
-![Topic modeling (non-scientific community before ChatGPT)](figures/topic-modeling-non-scientific-before.png){#fig:topic-modeling-non-scientific-before}
-
-![Topic modeling (non-scientific community after ChatGPT)](figures/topic-modeling-non-scientific-after.png){#fig:topic-modeling-non-scientific-after}
 
 Note that the evaluations described in this section are all subjective, as an interpretation of the words and topics is done.  Taking this remark into account, we could carefully conclude for RQ 1 that there is indeed a difference in the topics discussed in the scientific and non-scientific community before and after the introduction of ChatGPT.  Topics discussed after ChatGPT was introduced appear to be more about problems and risks associated with the use of AGI-like systems like ChatGPT.
 
@@ -177,10 +169,6 @@ The evaluation of RQ 1 was mostly subjective.  For the evaluation of RQ 2, we tr
 Figure @{fig:sentiment-scientific} illustrates the general sentiment evolution over time for the scientific community.  The trend is negative over time.  Looking at the sentiment for transcripts before the introduction of ChatGPT (Figure @{fig:sentiment-scientific-before}) shows that the slope of the trend line was negative.  Looking at the sentiment for transcripts after the introduction of ChatGPT (Figure @{fig:sentiment-scientific-after}) shows that the slope is decreasing more than before the introduction of ChatGPT, even though the difference in slope before and after the introduction of ChatGPT is minor.   In other words, the general decrease in sentiment is partly explained by the introduction of ChatGPT.  Slope values are summarized in Table \ref{table:slopes-scientific}.
 
 ![Sentiment analysis over time (scientific community)](figures/sentiment-scientific.png){#fig:sentiment-scientific}
-
-![Sentiment analysis before ChatGPT (scientific community)](figures/sentiment-scientific-before.png){#fig:sentiment-scientific-before}
-
-![Sentiment analysis after ChatGPT (scientific community)](figures/sentiment-scientific-after.png){#fig:sentiment-scientific-after}
 
 | community  | ChatGPT          | slope       |
 |------------|------------------|-------------|
@@ -195,10 +183,6 @@ Figure @{fig:sentiment-non-scientific} illustrates the general sentiment evoluti
 
 ![Sentiment analysis over time (non-scientific community)](figures/sentiment-non-scientific.png){#fig:sentiment-non-scientific}
 
-![Sentiment analysis before ChatGPT (non-scientific community)](figures/sentiment-non-scientific-before.png){#fig:sentiment-non-scientific-before}
-
-![Sentiment analysis after ChatGPT (non-scientific community)](figures/sentiment-non-scientific-after.png){#fig:sentiment-non-scientific-after}
-
 | community      | ChatGPT          | slope       |
 |----------------|------------------|-------------|
 | non-scientific | before and after | -3.3903E-06 |
@@ -207,15 +191,59 @@ Figure @{fig:sentiment-non-scientific} illustrates the general sentiment evoluti
 
 Table: Slope values for non-scientific community \label{table:slopes-non-scientific}
 
+We can summarize the evaluation of RQ 2 as follows : in both the scientific and non-scientific community, there is a (small) tendency towards more negative sentiment about AGI after the introduction of ChatGPT.  
+
 # Discussion
 
-zeker te vermelden : weinig data non-scientific.   interessant om te doen met meer data. 
+Accomplishing AGI has been a goal of (strong) AI from the beginning.  ChatGPT was regarded by some as an AGI when it was introduced.   But people soon started to reflect on the many ethical issues associated with generative AI in general and ChatGPT in particular.  We saw more discussions about the fear of super human level intelligence and humanity losing control to superior AI systems.  Competitors of OpenAI even suggested development of ChatGPT models should be temporarily suspended.  
+
+Is ChatGPT **safe** to use?  Many aspects are important in this discussion :  
+
+- **Input bias** : ChatGPT is trained on a huge internet corpus.  These data may be biased and as such, ChatGPT will learn these biases while being trained.
+- **Copyright issues** : ChatGPT may have been trained on copyrighted materials.  What about the copyrights of the original authors who see there copyrighted material being made available to the public without the proper compensation?
+- **Transparency** : It is not clear how and why ChatGPT generates a response, which sources were used, why it preferred one source over another, ...
+- **Accountability** : Who is liable when ChatGPT produces false information and this leads to injury or other harm?
+- **Data privacy** : People interact with ChatGPT by inputting prompts and they may give away personal information by doing so.  The data entered by users is used to further enhance the model, so people need to be sure they don't give away sensitive information.
+- **Trust** : People may put too much trust in ChatGPT, not recognizing that it remains a statistical model.  ChatGPT very confidently hallucinates answers to questions, meaning these answers cannot necessarily be trusted.
+- **Fairness**: ChatGPT is operated by OpenAI, which is (now) a commercial entity.  AGI should be available to all, not only to people who can afford monthly subscriptions.  Note there is a (limited) free layer.
+- **Resilience and security**: AI systems need to be resilient and secure. In order to be safe, they need a fallback plan in case something goes wrong.  In order to minimize and prevent unintentional harm, they need to be accurate, reliable and reproducible.  
+- **Cybersecurity**: ChatGPT can be used to write very convincing texts, with the potential for abuse.  I.e. phishing emails and fake websites can be made with very little effort and these can be used to scam people.
+- **Regulation**:  Some parts of the world have introduced regulation about AI (EU AI act), but other parts of the world are still working on this.  To properly regulate global players like OpenAI, we need a global framework.  Given the rapid evolution of AI, this legal framework needs to be flexible enough to keep up with changing reality.
+- **Environmental impact**:  generative AI models have huge computational costs to both train and operate them.  This has a negative impact on the enviroment, which will only increase linearly with the use of such models.
+- **Societal impact**: Finally, generative AI models may have a considerable impact on society as a whole, as it will become increasingly difficult to judge what information is human-made, correct and trustworthy.  Additionally, AGIs may have a profound impact on some professions.
+
+Discussing these ethical issues and ensuring we take the necessary steps to avoid negative consequences as much as possible, is vital if we want to integrate generative AI models in our society.
 
 # Conclusion
 
-zeker te vermelden : weinig data non-scientific.   interessant om te doen met meer data
+In this report, we have analyzed transcripts from Youtube videos about AGI from experts in both the scientific and the non-scientific community.  We wanted to analyze whether the narrative about AGI changed after the introduction of ChatGPT.  We saw some subjective change in the topics discussed before and after ChatGPT, going from more positive topics before ChatGPT to slightly less positive topics after ChatGPT.  We did a more objective evaluation of the sentiment around AGI before and after ChatGPT by using a sentiment analysis model.  Sentiment appeared to already become less positive in the period leading up to the introduction of ChatGPT, but we saw this trend increased slightly after the introduction of ChatGPT.  
+
+We see some opportunities for future work.  First, the non-scientific community corpus in particular was very small (see Table \ref{table:counts}).  It would be interesting to do a more elobarate analysis using more data.  Second, we limited our analysis to transcripts of Youtube videos.  It would make sense to include other sources as well, like scientific articles, blog articles, etc. 
+
+Whether generative AI model will ultimately benefit society remains to be seen.   We can only applaud the fact that discussions are being held about the ethical risks of these models and how to take the necessary steps to mitigate them.
 
 # References
 
 ::: {#refs}
 :::
+
+# Appendix A Topic modeling
+
+![Topic modeling (scientific community before ChatGPT)](figures/topic-modeling-scientific-before.png){#fig:topic-modeling-scientific-before}
+
+![Topic modeling (scientific community after ChatGPT)](figures/topic-modeling-scientific-after.png){#fig:topic-modeling-scientific-after}
+
+![Topic modeling (non-scientific community before ChatGPT)](figures/topic-modeling-non-scientific-before.png){#fig:topic-modeling-non-scientific-before}
+
+![Topic modeling (non-scientific community after ChatGPT)](figures/topic-modeling-non-scientific-after.png){#fig:topic-modeling-non-scientific-after}
+
+
+# Appendix B Sentiment Analysis
+
+![Sentiment analysis before ChatGPT (scientific community)](figures/sentiment-scientific-before.png){#fig:sentiment-scientific-before}
+
+![Sentiment analysis after ChatGPT (scientific community)](figures/sentiment-scientific-after.png){#fig:sentiment-scientific-after}
+
+![Sentiment analysis before ChatGPT (non-scientific community)](figures/sentiment-non-scientific-before.png){#fig:sentiment-non-scientific-before}
+
+![Sentiment analysis after ChatGPT (non-scientific community)](figures/sentiment-non-scientific-after.png){#fig:sentiment-non-scientific-after}
