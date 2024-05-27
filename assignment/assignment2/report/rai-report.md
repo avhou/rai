@@ -24,15 +24,15 @@ Not everyone is convinced AGI is possible.  There may be fundamental limitations
 
 The introduction of ChatGPT [@chatgpt] on November 30, 2022 changed the discussions about AGI.  Did OpenAI, the company behind ChatGPT, achieve AGI?  The authors of [@chatgpt1] investigate whether the technique of human-centric functional modeling (HCFM) can be used to provide a functional definition of intelligence that can be used to confirm whether ChatGPT can be classified as an AGI.  They conclude several HCFM criteria are not met.  The authors of [@chatgpt2] designate ChatGPT as an AGI.
 
-In this paper we want to examine the opinions on AGI of both the scientific and the non-scientific community.  We use natural language processing (NLP) to analyze the transcripts of a collection of Youtube videos, and try to compare the topics discussed and the sentiment about AGI in these communities both before and after the introduction of ChatGPT.
+In this paper we want to examine the opinions on AGI of both the scientific and the non-scientific community.  We use natural language processing (NLP) to analyze the transcripts of a collection of Youtube videos, and try to compare the topics discussed and the sentiment about AGI in these communities both before and after the introduction of ChatGPT.  In particular, we wish to examine whether the opinion on the safety of AGI systems has changed over time.
 
 # Goal
 
-In this paper, we aim to investigate whether the introduction of ChatGPT changed the topics discussed in the scientific and non-scientific community.  We formulate a first research question.
+In this paper, we aim to investigate whether the introduction of ChatGPT changed the topics discussed in the scientific and non-scientific community.  Are experts talking more about safety aspects of AGI systems? We formulate a first research question.
 
 > **RQ 1 : Did the introduction of ChatGPT change the topics discussed in the scientific and non-scientific AGI community? **
 
-Furthermore, we are interested in investigating whether sentiment about AGI has changed after the introduction of ChatGPT.   Risks related to AGI were already studied before the introduction of ChatGPT, but new questions were raised, e.g. the potential for abuse, the unjustified use of source datasets, copyright issues, and hallucination of results.  We formulate a second research question.
+Furthermore, we are interested in investigating whether sentiment about AGI has changed after the introduction of ChatGPT.   Risks related to AGI were already studied before the introduction of ChatGPT, but new questions questions about safe use of ChatGPT were raised, e.g. the potential for abuse, the unjustified use of source datasets, copyright issues, and hallucination of results.  We formulate a second research question.
 
 > **RQ 2 : Did the introduction of ChatGPT change the general sentiment about AGI in the scientific and non-scientific AGI community? **
 
@@ -196,9 +196,8 @@ We can summarize the evaluation of RQ 2 as follows : in both the scientific and 
 
 Accomplishing AGI has been a goal of (strong) AI from the beginning.  ChatGPT was regarded by some as an AGI when it was introduced.   But people soon started to reflect on the many ethical issues associated with generative AI in general and ChatGPT in particular.  We saw more discussions about the fear of super human level intelligence and humanity losing control to superior AI systems.  Competitors of OpenAI even suggested development of ChatGPT models should be temporarily suspended.  
 
-Is it **safe** to use ChatGPT as a society?  Many aspects are important in this discussion :  
+We categorize an AGI system as **safe** when it acts ethically and responsibly, it complies with instructions and it resists bias.  Many aspects are important in this discussion :  
 
-- **Input bias** : ChatGPT is trained on a huge internet corpus.  This data may be biased and as such, ChatGPT will learn these biases while being trained.
 - **Copyright issues** : ChatGPT may have been trained on copyrighted materials.  What about the copyrights of the original authors who see their copyrighted material being made available to the public without proper compensation?
 - **Transparency** : It is not clear how and why ChatGPT generates a response, which sources were used, or why it preferred one source over another.
 - **Accountability** : Who is liable when ChatGPT produces false information and this leads to injury or other harm?
@@ -208,6 +207,8 @@ Is it **safe** to use ChatGPT as a society?  Many aspects are important in this 
 - **Resilience and security**: AI systems need to be resilient and secure. In order to be safe, they need a fallback plan in case something goes wrong.  In order to minimize and prevent unintentional harm, they need to be accurate, reliable and reproducible.
 - **Cybersecurity**: ChatGPT can be used to write very convincing texts, with the potential for abuse.  I.e. phishing emails and fake websites can be made with very little effort and these can be used to scam people.
 - **Regulation**:  Some parts of the world have introduced regulation about AI (EU AI act), but other parts of the world are still working on this.  To properly regulate global players like OpenAI, we need a global framework.  Given the rapid evolution of AI, this legal framework needs to be flexible enough to keep up with changing reality.
+- **Input bias** : ChatGPT is trained on a huge internet corpus.  This data may be biased and as such, ChatGPT will learn these biases while being trained.
+- **Instruction Compliance** : ChatGPT is a black box.  There is no reason to assume ChatGPT would deliberately generate text that defies instructions specified in the input prompts, but since it lacks real **transparency**, there is no way to know for sure whether commercial or other interests are preferred over user instructions.
 - **Environmental impact**:  generative AI models have huge computational costs to both train and operate them.  This has a negative impact on the enviroment, which will only increase linearly with the use of such models.
 - **Societal impact**: Finally, generative AI models may have a considerable impact on society as a whole, as it will become increasingly difficult to judge what information is human-made, correct and trustworthy.  Additionally, AGIs may have a profound impact on some professions.
 
@@ -216,6 +217,8 @@ Discussing these ethical issues and ensuring we take the necessary steps to avoi
 # Conclusion
 
 In this report, we have analyzed transcripts from Youtube videos about AGI from experts in both the scientific and the non-scientific community.  We wanted to analyze whether the discussions about AGI changed after the introduction of ChatGPT.  We found some subjective change in the topics discussed before and after ChatGPT, going from more positive topics (before ChatGPT) to slightly less positive topics (after ChatGPT).  We also performed a more objective evaluation of the sentiment around AGI by using a sentiment analysis model.  Sentiment appeared to already become less positive in the period leading up to the introduction of ChatGPT, but we found this trend increased slightly after the introduction of ChatGPT.  
+
+The safe use of an AGI system implies it acts ethically and responsibly, and it resists bias.  We did not thoroughly investigate whether ChatGPT can be considered a "real" AGI system. However, assuming we can categorize it as such, we discussed many issues the current ChatGPT models have concerning safety.
 
 We see some opportunities for future work.  First, the non-scientific community corpus in particular was very small (see Table \ref{table:counts}).  It would be interesting to do a more elobarate analysis using more data.  Second, we limited our analysis to transcripts of Youtube videos.  It would make sense to include other sources as well, like scientific articles, blog articles, etc. 
 
