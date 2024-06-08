@@ -1,5 +1,5 @@
 ---
-wtitle: "IM0802-232434M - Responsible Artificial Intelligence assignment 2"
+title: "IM0802-232434M - Responsible Artificial Intelligence assignment 2"
 subtitle: "Pre and post ChatGPT Artificial General Intelligence topic and sentiment analysis"
 author: "Alexander Van Hecke (852631385)"
 abstract: "Artificial General Intelligence (AGI) has been a heavily debated topic for many years.  The introduction of ChatGPT was a milestone in the field of AI.   This report aims to extract and analyze transcripts from talks and interviews about AGI found on Youtube.  Both expert and non-expert opinions are considered and compared.  We analyze the discussed topics as well as the general sentiment (positive or negative).  We consider ethical issues concerning the safe use of AGI systems."
